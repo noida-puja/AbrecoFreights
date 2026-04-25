@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Abreco Logo — Anatomy</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #15181f;
+    --ink-soft: #4a5260;
+    --ink-dim: #7a8290;
+    --line: #2b303a;
+    --bg: #ffffff;
+    --red: #e63048;
+    --sky: #1f93cd;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "kern" on;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Wrapper: viewport-sized box that centers the canvas */
+  .viewport-wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Canvas: still 1800×1350 internally, but visually scaled (via JS) to fit any viewport */
+  .canvas {
+    position: relative;
+    width: 1800px;
+    height: 1350px;
+    background: var(--bg);
+    overflow: hidden;
+    flex-shrink: 0;
+    transform: scale(var(--canvas-scale, 1));
+    transform-origin: center center;
+  }
+
+  /* Header strip */
+  .head {
+    position: absolute;
+    top: 44px; left: 70px; right: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e8e7e1;
+    z-index: 5;
+  }
+  .head .brand {
+    font-size: 17px; font-weight: 600;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .head .title-em {
+    font-family: var(--serif); font-style: italic;
+    font-size: 26px; color: var(--ink-soft);
+    font-variation-settings: "opsz" 80;
+  }
+  .head .meta {
+    font-size: 16px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+
+  /* Center title block */
+  .center-cap {
+    position: absolute;
+    top: 130px; left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+  }
+  .center-cap h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 105px;
+    letter-spacing: -0.022em;
+    line-height: 1.05;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .center-cap h1 em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144;
+    background: linear-gradient(92deg, var(--red), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .center-cap .sub {
+    margin-top: 18px;
+    font-size: 19px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+
+  /* Logo */
+  .product {
+    position: absolute;
+    left: 50%; top: 480px;
+    transform: translateX(-50%);
+    width: 640px; height: 395px;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 24px 48px rgba(230, 48, 72, 0.10))
+      drop-shadow(0 -10px 36px rgba(31, 147, 205, 0.08));
+    z-index: 2;
+  }
+
+  /* SVG lines */
+  .lines {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .lines .leader {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .lines .leader.red  { stroke: rgba(230, 48, 72, 0.55); }
+  .lines .leader.blue { stroke: rgba(31, 147, 205, 0.55); }
+  .lines .ring {
+    fill: var(--bg);
+    stroke-width: 2.5;
+  }
+  .lines .core { stroke: none; }
+  .lines .ring.red  { stroke: var(--red); }
+  .lines .ring.blue { stroke: var(--sky); }
+  .lines .core.red  { fill: var(--red); }
+  .lines .core.blue { fill: var(--sky); }
+
+  /* Callout */
+  .callout {
+    position: absolute;
+    width: 460px;
+    z-index: 4;
+  }
+  .callout .num {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 115px;
+    line-height: 0.85;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .callout.c-1 .num, .callout.c-3 .num, .callout.c-5 .num { color: var(--red); }
+  .callout.c-2 .num, .callout.c-4 .num, .callout.c-6 .num { color: var(--sky); }
+  .callout h3 {
+    font-family: var(--sans);
+    font-size: 23px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink);
+    margin-top: 14px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .callout p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .callout p strong { color: var(--ink); font-weight: 600; }
+
+  .callout.right { text-align: right; }
+  .callout.right .num-row { display: flex; justify-content: flex-end; }
+  .callout .num-row { display: flex; align-items: baseline; gap: 18px; }
+
+  /* Positions — adjusted for 1800x1350 canvas */
+  .c-1 { left: 70px;  top: 320px;  }
+  .c-3 { left: 70px;  top: 660px;  }
+  .c-5 { left: 70px;  top: 1010px; }
+  .c-2 { right: 70px; top: 320px;  }
+  .c-4 { right: 70px; top: 660px;  }
+  .c-6 { right: 70px; top: 1010px; }
+
+  /* Footer */
+  .foot {
+    position: absolute;
+    bottom: 44px; left: 70px; right: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 22px;
+    border-top: 1px solid #e8e7e1;
+    z-index: 5;
+  }
+  .foot-credit {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-size: 17px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .foot-credit::before {
+    content: "";
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: linear-gradient(90deg, var(--red), var(--sky));
+  }
+  .foot-credit strong { color: var(--ink); font-weight: 600; }
+  .foot-meta {
+    font-size: 16px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--ink-dim);
+  }
+</style>
+</head>
+<body>
+
+<div class="viewport-wrap">
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="head">
+    <div class="brand">Abreco Group</div>
+    <div class="title-em">The Anatomy of a Mark</div>
+    <div class="meta">Six Layers · One Logo</div>
+  </div>
+
+  <!-- CENTER TITLE -->
+  <div class="center-cap">
+    <h1>Six parts. One <em>promise.</em></h1>
+    <div class="sub">A reading of the Abreco Group identity</div>
+  </div>
+
+  <!-- PRODUCT (LOGO) -->
+  <img class="product" src="logo.png" alt="Abreco Group logo" />
+
+  <!-- LINES — logo at 640×395 centered at (900, 677), content area x:583..1217 y:480..875.
+       Dot coords come from find_shape_anchors.py — every dot lands ON its coloured shape. -->
+  <svg class="lines" viewBox="0 0 1800 1350" preserveAspectRatio="none">
+
+    <!-- 1: top-left → red shape (upper-mid red, 30% / 35% of logo) -->
+    <path class="leader red" d="M 470 420 L 620 420 L 773 618" />
+    <circle class="ring red" cx="773" cy="618" r="13" />
+    <circle class="core red" cx="773" cy="618" r="5" />
+
+    <!-- 2: top-right → top of blue / navy (50% / 15% of logo) -->
+    <path class="leader blue" d="M 1330 420 L 1180 420 L 900 539" />
+    <circle class="ring blue" cx="900" cy="539" r="13" />
+    <circle class="core blue" cx="900" cy="539" r="5" />
+
+    <!-- 3: mid-left → centre of red (41% / 66%) -->
+    <path class="leader red" d="M 470 760 L 620 760 L 843 741" />
+    <circle class="ring red" cx="843" cy="741" r="13" />
+    <circle class="core red" cx="843" cy="741" r="5" />
+
+    <!-- 4: mid-right → sky-inner of blue (54.8% / 37.9%) -->
+    <path class="leader blue" d="M 1330 760 L 1180 760 L 931 630" />
+    <circle class="ring blue" cx="931" cy="630" r="13" />
+    <circle class="core blue" cx="931" cy="630" r="5" />
+
+    <!-- 5: bottom-left → red bottom-tip (51.6% / 98.7%) -->
+    <path class="leader red" d="M 470 1110 L 700 1110 L 910 870" />
+    <circle class="ring red" cx="910" cy="870" r="13" />
+    <circle class="core red" cx="910" cy="870" r="5" />
+
+    <!-- 6: bottom-right → blue bottom-right tail (71.8% / 73.6%) -->
+    <path class="leader blue" d="M 1330 1110 L 1180 1110 L 1038 771" />
+    <circle class="ring blue" cx="1038" cy="771" r="13" />
+    <circle class="core blue" cx="1038" cy="771" r="5" />
+  </svg>
+
+  <!-- CALLOUTS — LEFT (1, 3, 5) -->
+  <div class="callout c-1">
+    <div class="num-row"><span class="num">1</span></div>
+    <h3>The Founding Fire</h3>
+    <p>The crimson sweep — the urgency that gets a truck on the road at 4 a.m. The original Abreco vertical: <strong>Freight</strong>, since 2010.</p>
+  </div>
+
+  <div class="callout c-3">
+    <div class="num-row"><span class="num">3</span></div>
+    <h3>The Body of Fire</h3>
+    <p>Fluid, not blocky. A sweep, not a stamp — because every shipment is a fresh negotiation between <strong>cost, time, and care</strong>.</p>
+  </div>
+
+  <div class="callout c-5">
+    <div class="num-row"><span class="num">5</span></div>
+    <h3>The Forward Foot</h3>
+    <p>The mark does not stand — it <strong>leans forward</strong> like a runner mid-stride. Diagonals carry energy. Standing still is losing.</p>
+  </div>
+
+  <!-- CALLOUTS — RIGHT (2, 4, 6) -->
+  <div class="callout c-2 right">
+    <div class="num-row"><span class="num">2</span></div>
+    <h3>The Word</h3>
+    <p>Above the fire, the blue rises. Maersk's tradition since 1886: <strong>stability, depth, professionalism</strong>. The contract you sign on.</p>
+  </div>
+
+  <div class="callout c-4 right">
+    <div class="num-row"><span class="num">4</span></div>
+    <h3>Two-Toned Depth</h3>
+    <p>Navy outside. Sky inside. The <strong>boardroom and the bay door</strong>, speaking the same colour in two octaves.</p>
+  </div>
+
+  <div class="callout c-6 right">
+    <div class="num-row"><span class="num">6</span></div>
+    <h3>The Hidden 'A'</h3>
+    <p>Between the colours, a letter forms. For <strong>Abreco</strong> — <strong>Ambition, Accountability, Assurance</strong>. A FedEx-arrow reveal.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="foot-credit">
+      Presented by <strong>Puja Raghav</strong> · HR Team · Abreco Freight Vertical
+    </div>
+    <div class="foot-meta">Founded 2010 · Dubai · India · Oman · 14 Verticals · 100+ Companies</div>
+  </div>
+</div>
+</div>
+
+<script>
+  // Fit the 1800×1350 canvas inside whatever viewport the user has, never zooming up past 1.0.
+  (function () {
+    const W = 1800, H = 1350;
+    const root = document.documentElement;
+    function fit() {
+      const s = Math.min(window.innerWidth / W, window.innerHeight / H, 1);
+      root.style.setProperty('--canvas-scale', s.toFixed(4));
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  })();
+</script>
+
+</body>
+</html>

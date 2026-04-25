@@ -1,0 +1,27 @@
+# Enforce LF in the repo, regardless of platform.
+# Working tree converts to native EOL on checkout (Windows = CRLF, *nix/macOS = LF).
+* text=auto eol=lf
+
+# Explicit text — keep diffs clean
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.py    text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.svg   text eol=lf
+*.txt   text eol=lf
+.gitignore     text eol=lf
+.gitattributes text eol=lf
+
+# Binaries — never touched
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary

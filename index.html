@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abreco Group — A Mark in Motion</title>
+<meta name="description" content="One logo. Six layers of meaning. Sixteen years of moving freight forward across UAE, Oman, and India." />
+
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --bg:        #07090d;
+  --bg-warm:   #0a0c10;
+  --bg-elev:   #10141b;
+
+  --ink:       #f0eee8;
+  --ink-soft:  #d8d4cc;
+  --ink-dim:   #8a8d96;
+  --ink-faint: #4a4d57;
+
+  --rule:      rgba(240, 238, 232, 0.08);
+  --rule-soft: rgba(240, 238, 232, 0.04);
+  --rule-strong: rgba(240, 238, 232, 0.18);
+
+  --red:    #e63048;
+  --navy:   #0e4f8a;
+  --sky:    #1f93cd;
+  --cream:  #d4c5a0;
+
+  --shadow-2: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-3: 0 20px 60px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.4);
+
+  --ease:        cubic-bezier(0.6, 0.05, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02", "kern" on;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 100;
+  opacity: 0.5; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ============================================================
+   TOP NAV
+============================================================ */
+.topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 40px;
+  padding: 22px 40px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  background: rgba(7, 9, 13, 0.65);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.topnav .brand {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.topnav .brand img {
+  width: 26px; height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(230, 48, 72, 0.3));
+}
+.topnav .nav-links {
+  display: flex; gap: 32px; justify-content: center;
+  list-style: none;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+}
+.topnav .nav-links a {
+  color: var(--ink-faint);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.4s var(--ease);
+}
+.topnav .nav-links a:hover, .topnav .nav-links a.active { color: var(--ink); }
+.topnav .nav-links a.active::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--red), var(--sky));
+}
+.topnav .right {
+  font-size: 10px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--ink-faint);
+  text-align: right;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  min-height: 100vh;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: 140px 40px 100px;
+  background:
+    radial-gradient(ellipse 70% 70% at 25% 80%, rgba(230, 48, 72, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 70% at 80% 20%, rgba(31, 147, 205, 0.16) 0%, transparent 60%),
+    var(--bg);
+  position: relative;
+}
+.hero-inner { max-width: 1080px; }
+.hero .eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 56px;
+}
+.hero .eyebrow::before, .hero .eyebrow::after {
+  content: ""; display: inline-block;
+  width: 28px; height: 1px;
+  background: currentColor; opacity: 0.5;
+}
+
+.hero-mark {
+  width: clamp(220px, 26vw, 340px);
+  margin: 0 auto 48px;
+  filter:
+    drop-shadow(0 30px 80px rgba(230, 48, 72, 0.30))
+    drop-shadow(0 -16px 60px rgba(31, 147, 205, 0.22));
+  animation: float 7s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-14px) scale(1.012); }
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+  font-size: clamp(48px, 8vw, 100px);
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.hero h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  background: linear-gradient(92deg, var(--red) 0%, var(--cream) 50%, var(--sky) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.hero .lede {
+  font-size: 19px;
+  color: var(--ink-dim);
+  max-width: 1080px;
+  margin: 0 auto 48px;
+  line-height: 1.55;
+}
+.hero-meta {
+  display: flex; gap: 36px;
+  justify-content: center; flex-wrap: wrap;
+  font-size: 11px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.hero-meta span { position: relative; }
+.hero-meta span + span::before {
+  content: "·"; position: absolute; left: -22px; top: 0;
+}
+.scroll-cue {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-size: 9px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.scroll-cue::after {
+  content: ""; width: 1px; height: 48px;
+  background: linear-gradient(180deg, var(--ink-faint), transparent);
+  animation: cue-pulse 2.2s ease-in-out infinite;
+}
+@keyframes cue-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%      { opacity: 1;   transform: scaleY(1.4); }
+}
+
+/* ============================================================
+   SHOWCASE — animated 6-callout infographic loop
+============================================================ */
+.showcase {
+  min-height: 100vh;
+  position: relative;
+  padding: 120px 60px 140px;
+  background: var(--bg-warm);
+  border-top: 1px solid var(--rule-soft);
+  overflow: hidden;
+}
+.showcase-head {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+.showcase-head .label {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 22px;
+}
+.showcase-head .label::before, .showcase-head .label::after {
+  content: ""; display: inline-block;
+  width: 28px; height: 1px;
+  background: currentColor; opacity: 0.5;
+}
+.showcase-head h2 {
+  font-size: clamp(40px, 5vw, 72px);
+  margin-bottom: 16px;
+}
+.showcase-head h2 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+  background: linear-gradient(92deg, var(--red), var(--sky));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.showcase-head .lede {
+  font-size: 13px; letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* Canvas: 1400 × 1000 viewBox, callouts absolute around centred logo */
+.showcase-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 30px auto 0;
+  aspect-ratio: 1.4 / 1;
+}
+.showcase-product {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 38%;
+  height: auto;
+  filter:
+    drop-shadow(0 18px 48px rgba(230, 48, 72, 0.22))
+    drop-shadow(0 -10px 36px rgba(31, 147, 205, 0.20));
+  z-index: 2;
+}
+
+/* SVG leader lines + ring/core dots */
+.showcase-lines {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+.showcase-lines .leader {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease), stroke-dashoffset 1s var(--ease) 0.2s;
+}
+.showcase-lines .leader.red  { stroke: rgba(230, 48, 72, 0.7); }
+.showcase-lines .leader.blue { stroke: rgba(31, 147, 205, 0.7); }
+.showcase-lines .leader[data-stage].active { opacity: 1; stroke-dashoffset: 0; }
+.showcase-lines .ring,
+.showcase-lines .core {
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0.4);
+  transition: opacity 0.4s var(--ease) 0.4s, transform 0.6s var(--ease-spring) 0.4s;
+}
+.showcase-lines .ring  { fill: var(--bg-warm); stroke-width: 2.4; }
+.showcase-lines .core  { stroke: none; }
+.showcase-lines .ring.red   { stroke: var(--red); }
+.showcase-lines .ring.blue  { stroke: var(--sky); }
+.showcase-lines .core.red   { fill: var(--red); }
+.showcase-lines .core.blue  { fill: var(--sky); }
+.showcase-lines .ring[data-stage].active,
+.showcase-lines .core[data-stage].active { opacity: 1; transform: scale(1); }
+
+/* Callouts */
+.callout {
+  position: absolute;
+  width: 340px;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--ease) 0.5s, transform 0.7s var(--ease) 0.5s;
+}
+.callout.active { opacity: 1; transform: translateY(0); }
+.callout .num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 0.85;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 10px;
+}
+.callout .num.red  { color: var(--red); }
+.callout .num.blue { color: var(--sky); }
+.callout h3 {
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.callout p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.callout p strong { color: var(--ink); font-weight: 600; }
+.callout.right { text-align: right; }
+
+/* Callout positions — match the SVG line endpoints */
+.c-1 { left: 0;  top: 5%;  }
+.c-3 { left: 0;  top: 42%; }
+.c-5 { left: 0;  top: 80%; }
+.c-2 { right: 0; top: 5%;  }
+.c-4 { right: 0; top: 42%; }
+.c-6 { right: 0; top: 80%; }
+
+/* Stage progress bar */
+.showcase-bar {
+  position: absolute;
+  bottom: -60px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+.showcase-bar .bar-cell {
+  width: 22px; height: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  transition: background 0.5s var(--ease), width 0.5s var(--ease);
+}
+.showcase-bar .bar-cell.active {
+  background: linear-gradient(90deg, var(--red), var(--sky));
+  width: 36px;
+}
+
+/* ============================================================
+   VISION SUMMARY
+============================================================ */
+.vision {
+  padding: 120px 80px;
+  position: relative;
+  border-top: 1px solid var(--rule-soft);
+  background: var(--bg);
+}
+.vision-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+.vision-grid .left .label {
+  font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--ink-dim); margin-bottom: 22px;
+}
+.vision-grid .left h3 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 400; letter-spacing: -0.022em; line-height: 1.05;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+.vision-grid .left h3 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+  background: linear-gradient(92deg, var(--red), var(--sky));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.vision-grid .right p {
+  font-size: 17px; line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.vision-grid .right p strong { color: var(--ink); font-weight: 600; }
+.vision-grid .right p em {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.05em; color: var(--ink);
+}
+.vision-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-top: 56px;
+}
+.vision-stats .s {
+  padding: 28px 24px;
+  border-right: 1px solid var(--rule);
+}
+.vision-stats .s:last-child { border-right: 0; }
+.vision-stats .s .num {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.4vw, 46px);
+  font-weight: 400; font-style: italic;
+  color: var(--ink); line-height: 1;
+  margin-bottom: 10px;
+  font-variation-settings: "opsz" 100, "SOFT" 60;
+}
+.vision-stats .s .lbl {
+  font-size: 11px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--ink-dim);
+}
+
+/* ============================================================
+   NAV CARDS
+============================================================ */
+.nav-cards {
+  padding: 100px 80px 140px;
+  position: relative;
+  background: var(--bg-warm);
+  border-top: 1px solid var(--rule-soft);
+}
+.nav-cards-inner { max-width: 1320px; margin: 0 auto; }
+.nav-cards-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.nav-cards-head .label {
+  font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 18px;
+}
+.nav-cards-head h3 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400; letter-spacing: -0.022em;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+.nav-cards-head h3 em { font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 90; }
+.nav-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.ncard {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 44px 36px;
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  background: var(--bg-elev);
+  overflow: hidden;
+  transition: all 0.5s var(--ease);
+  min-height: 280px;
+}
+.ncard::before {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--sky));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+.ncard:hover {
+  border-color: var(--rule-strong);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3);
+}
+.ncard:hover::before { transform: scaleX(1); }
+.ncard .nc-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; color: var(--ink-faint);
+  font-variation-settings: "opsz" 60;
+  margin-bottom: 18px;
+}
+.ncard h4 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.ncard p {
+  font-size: 14px; color: var(--ink-dim); line-height: 1.55;
+  margin-bottom: auto;
+  padding-bottom: 24px;
+}
+.ncard .nc-go {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  transition: color 0.4s var(--ease);
+}
+.ncard:hover .nc-go { color: var(--ink); }
+.ncard .nc-go .arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+.ncard:hover .nc-go .arrow { transform: translateX(4px); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.foot {
+  padding: 60px 40px 50px;
+  background: var(--bg);
+  border-top: 1px solid var(--rule-soft);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 40px;
+}
+.foot .credit {
+  display: inline-flex; align-items: center; gap: 14px;
+  justify-self: start;
+}
+.foot .credit-line {
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: linear-gradient(90deg, var(--red), var(--sky));
+  opacity: 0.7;
+}
+.foot .credit-text {
+  font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.foot .credit-text strong { color: var(--ink); font-weight: 600; }
+.foot .colophon {
+  font-size: 10px; letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+============================================================ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.15s; }
+.reveal.d2 { transition-delay: 0.30s; }
+.reveal.d3 { transition-delay: 0.45s; }
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark, .hero h1 em { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0.2s !important; }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1100px) {
+  .topnav { padding: 18px 24px; gap: 24px; grid-template-columns: auto 1fr auto; }
+  .topnav .nav-links { gap: 18px; font-size: 10px; }
+  .hero { padding: 120px 24px 80px; }
+  .showcase { padding: 100px 24px 140px; }
+  .showcase-canvas { aspect-ratio: auto; max-width: 720px; }
+  .showcase-product { position: relative; left: auto; top: auto; transform: none; width: 100%; max-width: 480px; margin: 0 auto; display: block; }
+  .showcase-lines { display: none; }
+  .callout { position: relative; left: auto !important; right: auto !important; top: auto !important; width: 100%; max-width: 480px; margin: 18px auto 0; text-align: left !important; }
+  .callout.right { text-align: left !important; }
+  .showcase-bar { bottom: -50px; }
+  .vision { padding: 80px 24px; }
+  .vision-grid { grid-template-columns: 1fr; gap: 40px; }
+  .vision-stats { grid-template-columns: repeat(2, 1fr); }
+  .vision-stats .s:nth-child(2) { border-right: 0; }
+  .vision-stats .s:nth-child(1), .vision-stats .s:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .nav-cards { padding: 80px 24px 100px; }
+  .nav-cards-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .topnav { grid-template-columns: 1fr auto; gap: 12px; padding: 14px 18px; }
+  .topnav .nav-links { display: none; }
+  .topnav .right { display: none; }
+  .vision-stats { grid-template-columns: 1fr; }
+  .vision-stats .s { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .vision-stats .s:last-child { border-bottom: 0; }
+  .showcase-text .stage-list li { padding: 12px; gap: 12px; }
+  .showcase-text .stage-list li .ix { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== TOP NAV ==================== -->
+<nav class="topnav">
+  <a class="brand" href="index.html">
+    <img src="logo.png" alt="" />
+    Abreco Group
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Overview</a></li>
+    <li><a href="story.html">The Logo Story</a></li>
+    <li><a href="story.html#ch-13">Journey</a></li>
+    <li><a href="story.html#ch-14">Network</a></li>
+    <li><a href="story.html#ch-20">Connect</a></li>
+  </ul>
+  <div class="right">A Brand Identity</div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="eyebrow reveal">A Mark in Motion</div>
+    <img class="hero-mark reveal d1" src="logo.png" alt="Abreco Group logo" />
+    <h1 class="reveal d1">One mark.<br /><em>Six layers of meaning.</em></h1>
+    <p class="lede reveal d2">
+      For sixteen years, the Abreco Group has carried a single mark across fourteen industries and a hundred countries.
+      Every line of it has a job. Every colour, a contract. This is what each part of it stands for —
+      one callout at a time.
+    </p>
+    <div class="hero-meta reveal d3">
+      <span>Founded 2010</span>
+      <span>Dubai · India · Oman</span>
+      <span>14 Verticals</span>
+      <span>100+ Companies</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SHOWCASE — animated 6-callout infographic ==================== -->
+<section class="showcase" id="showcase">
+  <div class="showcase-head">
+    <div class="label">The Anatomy of a Mark</div>
+    <h2 class="display">Six parts. <em>One promise.</em></h2>
+    <p class="lede">Each layer of the Abreco identity, revealed one at a time.</p>
+  </div>
+
+  <div class="showcase-canvas" id="showcaseCanvas">
+    <img class="showcase-product" src="logo.png" alt="Abreco mark with six animated callouts" />
+
+    <!-- SVG leader lines + ring/core dot markers — coordinates derived from
+         find_shape_anchors.py so every dot lands ON its coloured shape.
+         viewBox 1400×1000, logo at 38% width centred → content x:434..966 y:334..666 -->
+    <svg class="showcase-lines" viewBox="0 0 1400 1000" preserveAspectRatio="none">
+      <path class="leader red"   data-stage="1" d="M 280 150 L 430 150 L 594 450" />
+      <circle class="ring red"   data-stage="1" cx="594" cy="450" r="12" />
+      <circle class="core red"   data-stage="1" cx="594" cy="450" r="5" />
+
+      <path class="leader blue"  data-stage="2" d="M 1120 150 L 970 150 L 700 384" />
+      <circle class="ring blue"  data-stage="2" cx="700" cy="384" r="12" />
+      <circle class="core blue"  data-stage="2" cx="700" cy="384" r="5" />
+
+      <path class="leader red"   data-stage="3" d="M 280 530 L 430 530 L 652 552" />
+      <circle class="ring red"   data-stage="3" cx="652" cy="552" r="12" />
+      <circle class="core red"   data-stage="3" cx="652" cy="552" r="5" />
+
+      <path class="leader blue"  data-stage="4" d="M 1120 530 L 970 530 L 725 459" />
+      <circle class="ring blue"  data-stage="4" cx="725" cy="459" r="12" />
+      <circle class="core blue"  data-stage="4" cx="725" cy="459" r="5" />
+
+      <path class="leader red"   data-stage="5" d="M 280 880 L 470 880 L 709 661" />
+      <circle class="ring red"   data-stage="5" cx="709" cy="661" r="12" />
+      <circle class="core red"   data-stage="5" cx="709" cy="661" r="5" />
+
+      <path class="leader blue"  data-stage="6" d="M 1120 880 L 970 880 L 816 578" />
+      <circle class="ring blue"  data-stage="6" cx="816" cy="578" r="12" />
+      <circle class="core blue"  data-stage="6" cx="816" cy="578" r="5" />
+    </svg>
+
+    <!-- 6 callouts: 1, 3, 5 on the left · 2, 4, 6 on the right -->
+    <div class="callout c-1" data-stage="1">
+      <div class="num red">1</div>
+      <h3>The Founding Fire</h3>
+      <p>The crimson sweep — urgency, energy, the original <strong>Abreco Freight</strong> vertical, since 2010.</p>
+    </div>
+    <div class="callout c-3" data-stage="3">
+      <div class="num red">3</div>
+      <h3>The Body of Fire</h3>
+      <p>A sweep, not a stamp — every shipment a fresh negotiation between <strong>cost, time, and care</strong>.</p>
+    </div>
+    <div class="callout c-5" data-stage="5">
+      <div class="num red">5</div>
+      <h3>The Forward Foot</h3>
+      <p>The mark <strong>leans forward</strong> like a runner mid-stride. Diagonals carry energy.</p>
+    </div>
+
+    <div class="callout c-2 right" data-stage="2">
+      <div class="num blue">2</div>
+      <h3>The Word</h3>
+      <p>Above the fire, the blue rises — <strong>stability, depth, professionalism</strong>. Maersk Blue's tradition.</p>
+    </div>
+    <div class="callout c-4 right" data-stage="4">
+      <div class="num blue">4</div>
+      <h3>Two-Toned Depth</h3>
+      <p>Navy outside. Sky inside. The <strong>boardroom and the bay door</strong>, in two octaves.</p>
+    </div>
+    <div class="callout c-6 right" data-stage="6">
+      <div class="num blue">6</div>
+      <h3>The Hidden 'A'</h3>
+      <p>Between the colours, a letter — for <strong>Abreco</strong>: Ambition, Accountability, Assurance.</p>
+    </div>
+
+    <!-- Stage progress bar -->
+    <div class="showcase-bar">
+      <span class="bar-cell" data-stage="1"></span>
+      <span class="bar-cell" data-stage="2"></span>
+      <span class="bar-cell" data-stage="3"></span>
+      <span class="bar-cell" data-stage="4"></span>
+      <span class="bar-cell" data-stage="5"></span>
+      <span class="bar-cell" data-stage="6"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== VISION SUMMARY ==================== -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="vision-grid">
+      <div class="left reveal">
+        <div class="label">The Vision</div>
+        <h3>From a single funnel of fire,<br /><em>a hundred companies.</em></h3>
+      </div>
+      <div class="right reveal d1">
+        <p>
+          Abreco Group is a <strong>16-year-old conglomerate</strong> founded in <strong>Jebel Ali Free Zone, Dubai</strong>, by Mohammed Shaji.
+          What began in 2010 as a single freight desk has grown into <strong>14 industries and over 100 operating companies</strong> — spanning Freight, Transport, Energy, Banking, Hospitality, Retail, Education, and more.
+        </p>
+        <p>
+          The mark you see above is the contract behind every one of those companies. Across <em>UAE, Oman, and India,</em> from Jebel Ali to Cochin to Bengaluru, the same 'A' opens the door.
+        </p>
+        <p>
+          The founding vertical — <strong>Abreco Freight</strong> — still runs the engine. Eight offices. A hundred countries. Fifty thousand shipments a year. ISO 9001:2015 quality-certified, WCAworld Gold Medallion-protected, and answering the phone.
+        </p>
+      </div>
+    </div>
+    <div class="vision-stats reveal d2">
+      <div class="s"><div class="num">2010</div><div class="lbl">Founded</div></div>
+      <div class="s"><div class="num">14</div><div class="lbl">Verticals</div></div>
+      <div class="s"><div class="num">100+</div><div class="lbl">Companies</div></div>
+      <div class="s"><div class="num">100+</div><div class="lbl">Countries served</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NAV CARDS ==================== -->
+<section class="nav-cards" id="explore">
+  <div class="nav-cards-inner">
+    <div class="nav-cards-head">
+      <div class="label">Explore Further</div>
+      <h3 class="reveal">Read the <em>full story.</em></h3>
+    </div>
+    <div class="nav-cards-grid reveal d1">
+      <a class="ncard" href="story.html">
+        <span class="nc-num">01</span>
+        <h4>The Logo Story</h4>
+        <p>Twelve chapters on the meaning of the mark — the fire, the word, the road, the hidden 'A', the forward tilt — grounded in the design tradition of FedEx, Maersk, and Nike.</p>
+        <span class="nc-go">12 Chapters <span class="arrow">→</span></span>
+      </a>
+      <a class="ncard" href="story.html#ch-13">
+        <span class="nc-num">02</span>
+        <h4>The Journey</h4>
+        <p>From a single freight desk in Jebel Ali, 2010, to 14 verticals and 100+ companies today. Six milestones, plotted on a timeline.</p>
+        <span class="nc-go">2010 → 2026 <span class="arrow">→</span></span>
+      </a>
+      <a class="ncard" href="story.html#ch-14">
+        <span class="nc-num">03</span>
+        <h4>Network &amp; Capability</h4>
+        <p>Eight offices across UAE, Oman, and India. Eight freight modes — from sea and air to project cargo and warehousing. Every accreditation, mapped.</p>
+        <span class="nc-go">8 cities · 100+ countries <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="foot">
+  <div class="credit">
+    <span class="credit-line"></span>
+    <span class="credit-text">Presented by <strong>Puja Raghav</strong> · HR Team · Abreco Freight Vertical</span>
+  </div>
+  <div class="colophon">Abreco Group · Founded 2010 · Dubai · India · Oman · The Founding Fire is Freight</div>
+</footer>
+
+<!-- ==================== SCRIPT ==================== -->
+<script>
+(function() {
+  // ----- Reveal on scroll
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.16 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ----- The 6-callout infographic animation
+  const showcaseEl   = document.getElementById('showcase');
+  const stageNodes   = showcaseEl ? showcaseEl.querySelectorAll('[data-stage]') : [];
+  const TOTAL_STAGES = 6;
+  let   currentStage = 0;
+  let   timer        = null;
+  let   running      = false;
+
+  function setStage(n) {
+    stageNodes.forEach(el => {
+      const s = parseInt(el.getAttribute('data-stage'), 10);
+      if (s <= n) el.classList.add('active');
+      else        el.classList.remove('active');
+    });
+  }
+
+  function tick() {
+    if (currentStage < TOTAL_STAGES) {
+      currentStage += 1;
+      setStage(currentStage);
+      timer = setTimeout(tick, 3000);   // 3-second gap between callouts
+    } else {
+      // All 6 visible — pause for 5 seconds, then reset and restart
+      timer = setTimeout(() => {
+        currentStage = 0;
+        setStage(0);
+        timer = setTimeout(tick, 700);  // small gap before next cycle
+      }, 5000);
+    }
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    currentStage = 0;
+    setStage(0);
+    timer = setTimeout(tick, 600);
+  }
+  function stop() {
+    running = false;
+    clearTimeout(timer);
+    currentStage = 0;
+    setStage(0);
+  }
+
+  // Start animation when showcase is in view; stop when it leaves
+  const showObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) start();
+      else                  stop();
+    });
+  }, { threshold: 0.35 });
+  if (showcaseEl) showObs.observe(showcaseEl);
+})();
+</script>
+
+</body>
+</html>
