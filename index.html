@@ -404,8 +404,10 @@ body::before {
 .vision-grid .left h3 {
   font-family: var(--serif);
   font-size: clamp(36px, 4.4vw, 60px);
-  font-weight: 400; letter-spacing: -0.022em; line-height: 1.05;
+  font-weight: 400; letter-spacing: -0.022em; line-height: 1.15;
   font-variation-settings: "opsz" 144, "SOFT" 40;
+  padding-right: 0.18em;
+  padding-bottom: 0.12em;
 }
 .vision-grid .left h3 em {
   font-style: italic;
@@ -413,6 +415,7 @@ body::before {
   background: linear-gradient(92deg, var(--red), var(--sky));
   -webkit-background-clip: text; background-clip: text;
   color: transparent;
+  padding-right: 0.08em;
 }
 .vision-grid .right p {
   font-size: 17px; line-height: 1.7;
@@ -624,33 +627,6 @@ body::before {
   .vision-stats .s:last-child { border-bottom: 0; }
   .showcase-text .stage-list li { padding: 12px; gap: 12px; }
   .showcase-text .stage-list li .ix { font-size: 22px; }
-
-  /* Hero stays exactly as-is — animated logo with red/blue glow halo */
-
-  /* Showcase: hide centre logo + leader lines/dots; let the 6 callouts
-     reveal one-by-one using the same .active animation as desktop. */
-  .showcase { padding: 80px 22px 110px; }
-  .showcase-head { margin-bottom: 12px; }
-  .showcase-canvas { margin-top: 18px; max-width: 100%; }
-  .showcase-product { display: none; }
-  .showcase-lines { display: none; }
-  .callout {
-    position: relative;
-    left: auto !important; right: auto !important; top: auto !important;
-    width: 100%; max-width: 520px;
-    margin: 28px auto 0;
-    padding: 22px 20px;
-    background: rgba(16, 20, 27, 0.55);
-    border: 1px solid var(--rule);
-    border-radius: 14px;
-    text-align: left !important;
-  }
-  .callout.right { text-align: left !important; }
-  .callout .num { font-size: 48px; margin-bottom: 6px; }
-  .callout h3 { font-size: 13px; }
-  .callout p  { font-size: 13.5px; line-height: 1.6; }
-  .showcase-bar { position: relative; bottom: auto; left: auto; transform: none;
-                  margin: 36px auto 0; justify-content: center; }
 }
 </style>
 </head>
